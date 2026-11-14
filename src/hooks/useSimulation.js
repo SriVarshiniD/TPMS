@@ -113,9 +113,11 @@ export function useSimulation() {
     let ws = null;
 
     function connectWs() {
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${protocol}//${window.location.host}/ws/simulation`;
+      const API_URL = import.meta.env.VITE_API_BASE_URL;
 
+const wsProtocol = API_URL.startsWith('https://') ? 'wss://' : 'ws://';
+const wsBaseUrl = API_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const wsUrl = `${wsProtocol}${wsBaseUrl}/ws/simulation`;
       try {
         ws = new WebSocket(wsUrl);
         wsRef.current = ws;
