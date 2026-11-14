@@ -1,5 +1,5 @@
 const API_BASE = `${(import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')}/api`;
-VITE_API_BASE_URL=https://tpms-backend-1rcx.onrender.com
+VITE_API_BASE_URL=https:tpms-backend-1rcx.onrender.com
 export async function fetchStatus() {
   const res = await fetch(`${API_BASE}/status`);
   if (!res.ok) throw new Error(`HTTP error ${res.status}`);
